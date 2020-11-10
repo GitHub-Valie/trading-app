@@ -6,8 +6,6 @@ client = Client(
     api_secret=config.binance['secret_key']
 )
 
-# Spot's endpoints
-
 spot_account = client.get_account()
 spot_balance_list = []
 

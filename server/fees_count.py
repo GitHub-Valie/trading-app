@@ -10,11 +10,6 @@ client = Client(
     api_secret=config.binance['secret_key']
 )
 
-
-# Obtenir le 'commission' et le 'commissionAsset' de chaque trade dans trades
-# Convertir le 'commission' en float et faire la somme des commissions
-# Convertir la somme des commissions en USDT
-
 BNB_fees = []
 USDT_fees = []
 
