@@ -1,6 +1,5 @@
 # api
-virtualenv
-venv
+.venv
 config.py
 __pycache__*
 test.py
