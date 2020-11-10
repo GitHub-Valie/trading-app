@@ -1,23 +1,42 @@
 from flask import Flask
 from flask import jsonify
 
+from dotenv import load_dotenv
+import os
+
 import config
 from binance.client import Client
 
 from spot_account import spot_totalWalletBalance, spot_balance_list
-from futures_account import futures_assets, futures_pnl, futures_totalMarginBalance, futures_totalWalletBalance, positions_list
+from futures_account import (
+    futures_assets, 
+    futures_pnl, 
+    futures_totalMarginBalance, 
+    futures_totalWalletBalance, 
+    positions_list
+)
 from total_balance import TotalWalletBalance
 
 from futures_tradesCounter import trades_counter, pnl_counter
 from trading_bot_info import generalInfo, best_trade
-from get_history import BATUSDT_candlesticks, XRPUSDT_candlesticks, ZILUSDT_candlesticks
+from get_history import (
+    BATUSDT_candlesticks, 
+    XRPUSDT_candlesticks, 
+    ZILUSDT_candlesticks
+)
+
+load_dotenv()
 
 client = Client(
     api_key=config.binance['public_key'],
     api_secret=config.binance['secret_key']
 )
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../app/build/', static_url_path='/')
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 @app.route('/spotTotalWalletBalance', methods=['GET'])
 def get_spotTotalWalletBalance():
@@ -121,3 +140,6 @@ def get_ZILUSDT_candlesticks():
 
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
+
+if __name__ == '__main__':
+    app.run(port=(os.getenv('PORT') if os.getenv('PORT') else 8000), debug=False)
