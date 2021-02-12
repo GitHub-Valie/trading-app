@@ -30,3 +30,9 @@ Générer un requirements.txt réutilisable et aux normes pour réutilisation é
 ### Lancer la react app
 
 ```npm start```
+
+<img src="https://raw.githubusercontent.com/GitHub-Valie/trading-app/master/app/src/images/app%20images/home.png">
+
+<img src="https://raw.githubusercontent.com/GitHub-Valie/trading-app/master/app/src/images/app%20images/dashboard.png">
+
+<img src="https://raw.githubusercontent.com/GitHub-Valie/trading-app/master/app/src/images/app%20images/cryptos-exchange.png">
